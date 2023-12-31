@@ -1,16 +1,22 @@
 :root {
     --primaryColor:  #F5B027;
     --secondaryColor: #c29846;
+    --whiteColor: #DFCD92;
     --blackColor: #000000;
+    --softBlackColor: #363025;
 }
 
 /*CSS GLOBAL*/
 nav {
-    background-color: var(--primaryColor);
+    background-color: var(--softBlackColor);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+.text_nav{
+    color: var(--primaryColor);
+}
+
 .ok_button{
     margin-left: -1rem;
 }
@@ -224,6 +230,7 @@ button{
 
     .nomsite{
     font-size: 20px;
+    color: var(--primaryColor);
     }   
 
     /* detail mobile*/

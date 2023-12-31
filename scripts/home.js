@@ -8,7 +8,6 @@ async function fetchMuseumList() {
     const response = await fetch("https://data.culturecommunication.gouv.fr/api/explore/v2.1/catalog/datasets/musees-de-france-base-museofile/records?limit=30")
     const json = await response.json();
     museumList = json.results
-
     //appel des resultats de l'API
     const firstMuseumName = museumList[0].nomoff; //nomoff = nom officiel des musees
 
@@ -46,6 +45,7 @@ function museumArticle() {
 
         star = document.getElementById('star')
         star.addEventListener('click', function () { star.style.opacity = "1"; })
+        
     }
 }
 
