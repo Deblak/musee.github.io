@@ -8,13 +8,13 @@
 
 /*CSS GLOBAL*/
 nav {
-    background-color: var(--softBlackColor);
+    background-color: var(--primaryColor);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .text_nav{
-    color: var(--primaryColor);
+    color: var(--softBlackColor);
 }
 
 .ok_button{

@@ -1,31 +1,31 @@
-let globalThemesSet = new Set;
+let globalThemesSet = new Set();
 let eachMuseumThemesTab = [];
 let museumList = [];
 let star;
 
-
 async function fetchMuseumList() {
-    const response = await fetch("https://data.culturecommunication.gouv.fr/api/explore/v2.1/catalog/datasets/musees-de-france-base-museofile/records?limit=30")
+    const response = await fetch('https://data.culturecommunication.gouv.fr/api/explore/v2.1/catalog/datasets/musees-de-france-base-museofile/records?limit=30');
     const json = await response.json();
-    museumList = json.results
+    museumList = json.results;
     //appel des resultats de l'API
-    const firstMuseumName = museumList[0].nomoff; //nomoff = nom officiel des musees
+    const firstMuseumName = museumList[0].nom_officiel;
 
     themeSet();
     museumArticle();
 }
 
 //Code HTML article des musees
-function museumHTML(museum){
-    const name = museum.nomoff;
-    const history = museum.hist;
-    const city = museum.ville_m;
-    const visit = museum.url_m;
+function museumHTML(museum) {
+    const name = museum.nom_officiel;
+    const history = museum.histoire;
+    const city = museum.ville;
+    const visit = museum.url;
+    const museumDetailURL = `details.html?museumName=${encodeURIComponent(name)}`;
 
-    return  `
+    return `
     <article>
         <header class="name_and_star">
-            <a href = "details.html"><h2>${name}</h2></a>
+            <a href="${museumDetailURL}"><h2>${name}</h2></a>
             <img src="./ressources/star.png" class="star" id="star" style="opacity:0.33"/>
         </header>
         <p>${history}</p>
@@ -36,6 +36,7 @@ function museumHTML(museum){
     `;
 }
 
+
 //Afficher par defaut les musees 
 function museumArticle() {
     //Boucle pour afficher les musees dans un article
@@ -45,7 +46,6 @@ function museumArticle() {
 
         star = document.getElementById('star')
         star.addEventListener('click', function () { star.style.opacity = "1"; })
-        
     }
 }
 
@@ -68,13 +68,17 @@ function handleSearchClick() {
     })
 }
 
+//************** CHANGEMENTS ICI *************
+
 //Gestion des themes de musees dans la liste déroulante
 function themeSet() {
     //tableau pour stocker les themes
-    museumList.map((museum) => {
-        eachMuseumThemesTab = museum.dompal; //dompal = themes des musees
-        for (let i = 0; i < eachMuseumThemesTab.length; i++) {
-            globalThemesSet.add(eachMuseumThemesTab[i]);
+    museumList.forEach((museum) => {
+        let eachMuseumThemesTab = museum.domaine_thematique;
+        if (eachMuseumThemesTab) { // Vérifier si eachMuseumThemesTab est défini
+            for (let i = 0; i < eachMuseumThemesTab.length; i++) {
+                globalThemesSet.add(eachMuseumThemesTab[i]);
+            }
         }
     });
 
@@ -94,15 +98,14 @@ function handleSelectChange(event) {
     console.log(selectedElement)
     let filteredTab = []
     museumList.map((museum) => {
-        eachMuseumThemesTab = museum.dompal;
+        eachMuseumThemesTab = museum.domaine_thematique;
         for (let i = 0; i < eachMuseumThemesTab.length; i++) {
             if (eachMuseumThemesTab.includes(selectedElement)) {
                 filteredTab.push(museum)
                 break;
             }
         }
-    }
-    )
+    })
 
     targetMuseum.innerHTML = "";
 
@@ -110,10 +113,10 @@ function handleSelectChange(event) {
     for (let i = 0; i < filteredTab.length; i++) {
         const museum = filteredTab[i];
 
-        const name = museum.nomoff;
-        const history = museum.hist;
-        const city = museum.ville_m;
-        const visit = museum.url_m;
+        const name = museum.nom_officiel;
+        const history = museum.histoire;
+        const city = museum.ville;
+        const visit = museum.url;
 
         let infoMuseum =
             `<article>
@@ -128,13 +131,10 @@ function handleSelectChange(event) {
             <hr/>`
         targetMuseum.innerHTML += infoMuseum;
     }
-    console.log('filteredTab:', filteredTab)
 }
-
 
 window.addEventListener("load", (event) => {
     fetchMuseumList();
-    console.log("Ici, load event listener.");
 });
 
 const targetMuseum = document.getElementById("targetMuseum");

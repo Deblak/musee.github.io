@@ -16,14 +16,14 @@
 <header>
     <nav>
         <div class="logo_and_name">
-            <img src="./ressources/logo-yellow.png" class="header_elements" alt="logo"/>
+            <img src="./ressources/logo.png" class="header_elements" alt="logo" />
             <h1 class="header_elements nomsite"><a class="text_nav" href="home.html">MUSEES</a></h1>
         </div>
         <div class="fav_and_search">
-            <img src="./ressources/star.png" class="star mobilestar" alt="star"/>
+            <img src="./ressources/star.png" class="star mobilestar" alt="star" />
             <p class="header_elements favorite"><a class="text_nav" href="favoris.html">Mes Favoris</a></p>
             <div class="search_div">
-                <input placeholder="Votre recherche" class="header_elements" id="search_input"/>
+                <input placeholder="Votre recherche" class="header_elements" id="search_input" />
                 <button class="ok_button" onclick="handleSearchClick()">OK</button>
             </div>
         </div>
@@ -32,59 +32,61 @@
 
 <!--Main-->
 <main>
-    <!--Museum themes - section - button -->
-    <section class="museum_themes" id="targetTheme">
-        <button class="button_theme">Archéologie</button>
-        <button class="button_theme">Ethnologie</button>
-        <button class="button_theme">Histoire</button>
-        <button class="button_theme">Sciences de la nature</button>
+    <section class="museum_themes" id="targetTheme"></section>
+    <section id="targetMuseum">
     </section>
-
-
-
-    <section>
-        <!-- Museum name -->
-        <header class="name_and_star">
-            <h2 id="targetName">Musée du Pays de Hanau - histoire et vies d’un territoire</h2>
-            <img src="ressources/star.png" class="star" alt="star"/>
-        </header>
-        <!-- Museum adress and phone -->
-        <article>
-            <address id="targetAddress">
-                3 place du Château<br />
-                67 330 Bouxwiller<br />
-            </address>
-            <p id="targetPhone">Téléphone : <a href="tel:+388003839">03 88 00 38 39</a> </p>
-
-        </article>
-    </section>
-
-    <!--Museum information section -->
-    <section class="museum_informations">
-        <article>
-            <!-- Museum atout -->
-            <p id="targetSkill">Histoire du pays de Hanau, bibliothèque de recherche (5.000 volumes), vie quotidienne au XIXe
-                siècle dans le pays de Hanau, le Bastberg et ses recherches géologiques. Divers objets et meubles
-                provenant de la famille de Marie Hart (Marie-Anne Hartmann), célèbre poétesse et romancière
-                d'expression
-                dialectale", "autnom":"Musée de Bouxwiller et du Pays d'Hanau.
-            </p>
-            <!-- Museum history -->
-            <p id="targetHistory">
-                Créé en 1934, le musée possède une salle en 1964, ainsi que 1.600 objets. En 1982, il compte sept
-                salles
-                et plus de 15.000 objets. Le musée, entièrement rénové, réouvre en juin 2013.
-            </p>
-        </article>
-        <!--Visit us button-->
-        <div>
-            <button class="visit visit_detail" id="targetVisit">Nous visiter</button>
-        </div>
-    </section>
-
-
 
 </main>
 <script src="scripts/details.js"></script>
 
 </html>
+
+<!--
+Museum themes - section - button
+<section class="museum_themes" id="targetTheme">
+    <button class="button_theme">Archéologie</button>
+    <button class="button_theme">Ethnologie</button>
+    <button class="button_theme">Histoire</button>
+    <button class="button_theme">Sciences de la nature</button>
+</section>
+
+<section>
+    Museum name
+    <header class="name_and_star">
+        <h2 id="targetName">Musée du Pays de Hanau - histoire et vies d’un territoire</h2>
+        <img src="ressources/star.png" class="star" alt="star"/>
+    </header>
+    Museum adress and phone
+    <article>
+        <address id="targetAddress">
+            3 place du Château<br />
+            67 330 Bouxwiller<br />
+        </address>
+        <p id="targetPhone">Téléphone : <a href="tel:+388003839">03 88 00 38 39</a> </p>
+
+    </article>
+</section>
+
+Museum information section
+<section class="museum_informations">
+    <article>
+        Museum atout
+        <p id="targetSkill">Histoire du pays de Hanau, bibliothèque de recherche (5.000 volumes), vie quotidienne au XIXe
+            siècle dans le pays de Hanau, le Bastberg et ses recherches géologiques. Divers objets et meubles
+            provenant de la famille de Marie Hart (Marie-Anne Hartmann), célèbre poétesse et romancière
+            d'expression
+            dialectale", "autnom":"Musée de Bouxwiller et du Pays d'Hanau.
+        </p>
+        Museum history
+        <p id="targetHistory">
+            Créé en 1934, le musée possède une salle en 1964, ainsi que 1.600 objets. En 1982, il compte sept
+            salles
+            et plus de 15.000 objets. Le musée, entièrement rénové, réouvre en juin 2013.
+        </p>
+    </article>
+    Visit us button
+    <div>
+        <button class="visit visit_detail" id="targetVisit">Nous visiter</button>
+    </div>
+</section>
+-->
